@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fgjdlfkdjj</title>
+    <style>
+        .table_container {
+            display: table;
+            margin-top: 20px;
+        }
+        .row {
+            display: table-row;
+        }
+        .cell {
+            display: table-cell;
+            border: 1px solid black;
+            width: 30px;
+            height: 30px; 
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <label for="start">Start Value:</label>
+    <input type="number" id="start" name="start">
+    <br><br>
+    <label for="end">End Value:</label>
+    <input type="number" id="end" name="end">
+    <br><br>
+    <button onclick="gener8()">Generate Table</button>
+    <br><br>
+    <div id="table_container" class="table_container"></div>
+
+    <script>
+        function gener8() {
+            const num1 = parseInt(document.getElementById('start').value);
+            const num2 = parseInt(document.getElementById('end').value);
+            const tabl = document.getElementById('table_container');
+            
+            tabl.innerHTML = '';
+
+            if (isNaN(num1)||isNaN(num2)||num1<2||num1>10||num2<2||num2>10){
+                alert('Please enter numbers between 2 and 10');}
+
+            const table = document.createElement('div');
+            table.className = 'table';
+
+            for (let i=num1-1;i<=num2;i++) {
+            const row = document.createElement('div');
+                row.className = 'row';
+                for (let j=num1-1;j<=num2;j++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                if (i===num1-1&&j===num1-1) {
+                        cell.textContent = '';
+                } else if (i===num1-1) {
+                        cell.textContent = j;
+                    } else if (j===num1-1) {
+                        cell.textContent = i;
+                    } else {
+                        cell.textContent = i*j;
+                    }
+                    row.appendChild(cell);}
+                table.appendChild(row);}
+            tabl.appendChild(table);}
+    </script>
+</body>
+
+</html>
+
+
